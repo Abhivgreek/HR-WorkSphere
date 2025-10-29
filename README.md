@@ -1,9 +1,3 @@
-Perfect 🌟 — here’s a **polished, professional, and visually rich** version of your `README.md` for **HR WorkSphere**, ideal for GitHub display.
-It includes **badges**, **section emojis**, **formatted structure**, and **professional styling** — making it look like a top-tier open-source project 👇
-
----
-
-```markdown
 <h1 align="center">💼 HR WorkSphere</h1>
 
 <p align="center">
@@ -168,7 +162,7 @@ Example:
 ## 👨‍💻 Author
 
 **Abhishek Verma**
-📧 [abhivgreek@gmail.com](mailto:abhivgreek@gmail.com)
+📧 [abhishekwoork@gmail.com](mailto:abhivgreek@gmail.com)
 🌐 [GitHub: Abhivgreek](https://github.com/Abhivgreek)
 💼 [LinkedIn: Abhishek Verma](https://linkedin.com/in/abhivgreek)
 
