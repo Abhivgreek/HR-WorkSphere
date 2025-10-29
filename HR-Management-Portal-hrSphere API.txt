@@ -1,0 +1,207 @@
+
+📘 1. Employee APIs
+Method	Endpoint	Description
+GET	/api/employees	Get all employees
+GET	/api/employees/{id}	Get employee by ID
+POST	/api/employees	Create new employee
+PUT	/api/employees/{id}	Update employee details
+DELETE	/api/employees/{id}	Delete employee by ID
+
+📘 2. LeaveTracker APIs
+Method	Endpoint	Description
+GET	/api/leaves	Get all leave requests
+GET	/api/leaves/{id}	Get leave request by ID
+POST	/api/leaves	Submit new leave request
+PUT	/api/leaves/{id}	Update leave request
+DELETE	/api/leaves/{id}	Delete leave request
+GET	/api/employees/{id}/leaves	Get leaves of a specific employee
+
+📘 3. Payroll APIs
+Method	Endpoint	Description
+GET	/api/payrolls	Get all payroll entries
+GET	/api/payrolls/{id}	Get payroll by ID
+POST	/api/payrolls	Create payroll for employee
+PUT	/api/payrolls/{id}	Update payroll details
+DELETE	/api/payrolls/{id}	Delete payroll
+GET	/api/employees/{id}/payrolls	Get payrolls for an employee
+
+📘 4. Message APIs
+Method	Endpoint	Description
+GET	/api/messages	Get all messages
+GET	/api/messages/{id}	Get message by ID
+POST	/api/messages	Send a new message
+PUT	/api/messages/{id}	Update message
+DELETE	/api/messages/{id}	Delete message
+GET	/api/employees/{id}/messages	Get messages sent/received by emp
+
+📘 5. Compose APIs
+Method	Endpoint	Description
+GET	/api/compose	Get all composed emails
+POST	/api/compose	Compose a new message
+DELETE	/api/compose/{id}	Delete a composed message
+
+📘 6. CreatePost APIs
+Method	Endpoint	Description
+GET	/api/posts	Get all posts
+GET	/api/posts/{id}	Get post by ID
+POST	/api/posts	Create new post
+PUT	/api/posts/{id}	Update post
+DELETE	/api/posts/{id}	Delete post
+
+📘 7. Authentication APIs (If Applicable)
+Method	Endpoint	Description
+POST	/api/auth/login	Login and get JWT token
+POST	/api/auth/signup	Register a new user
+GET	/api/auth/me	Get current user details
+
+=========================
+
+
+
+✅ Step 1: Set Up the Backend
+Make sure:
+
+Your Spring Boot backend is running (e.g., on http://localhost:8080)
+
+The APIs are available (check logs or Swagger if present)
+
+✅ Step 2: Install Postman
+Download Postman: https://www.postman.com/downloads/
+
+✅ Step 3: Test API Examples
+🔐 (A) Login (Authentication)
+If using JWT:
+
+Endpoint: POST /api/auth/login
+
+Headers:
+
+pgsql
+Copy
+Edit
+Content-Type: application/json
+Body (raw JSON):
+
+json
+Copy
+Edit
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
+Response:
+
+json
+Copy
+Edit
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp..."
+}
+✅ Save the token and use it for authorization in future requests.
+
+🔐 (B) Set Authorization Header
+For any protected API:
+
+Go to Authorization tab → Type: Bearer Token
+
+Paste token:
+
+Copy
+Edit
+eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp...
+OR
+
+Go to Headers tab and add:
+
+makefile
+Copy
+Edit
+Key: Authorization
+Value: Bearer <your_token>
+👤 (C) Test Employee APIs
+1. Get All Employees
+
+Method: GET
+
+URL: http://localhost:8080/api/employees
+
+2. Add New Employee
+
+Method: POST
+
+URL: http://localhost:8080/api/employees
+
+Body (JSON):
+
+json
+Copy
+Edit
+{
+  "name": "Shubham Kumar",
+  "email": "shubham@example.com",
+  "department": "IT",
+  "role": "Developer"
+}
+📆 (D) Test LeaveTracker
+Apply for Leave
+
+POST /api/leaves
+
+Body:
+
+json
+Copy
+Edit
+{
+  "leave_type": "Sick",
+  "start_date": "2025-08-10",
+  "end_date": "2025-08-12",
+  "status": "Pending",
+  "employee_id": 1
+}
+💰 (E) Test Payroll
+Add Payroll
+
+POST /api/payrolls
+
+Body:
+
+json
+Copy
+Edit
+{
+  "employee_id": 1,
+  "basic_salary": 30000,
+  "hra": 8000,
+  "transport_allowance": 2000,
+  "medical_allowance": 1500,
+  "gross_salary": 41500,
+  "total_deductions": 3000,
+  "net_salary": 38500,
+  "payroll_month": "August",
+  "payroll_year": 2025,
+  "status": "DRAFT"
+}
+💬 (F) Test Messages
+Send a Message
+
+POST /api/messages
+
+Body:
+
+json
+Copy
+Edit
+{
+  "sender_id": 1,
+  "receiver_id": 2,
+  "content": "Meeting at 4 PM"
+}
+✅ Tips
+Set Content-Type to application/json in the Headers
+
+Save collections in Postman to re-use
+
+Use environment variables for {{base_url}} and {{token}}
+
+If your backend has CORS issues, make sure it's configured properly
